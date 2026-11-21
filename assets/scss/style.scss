@@ -1,0 +1,112 @@
+// =========================================================
+// HANDICRAFT BY SONIA - SASS (SCSS) STYLESHEET
+// Compiled to: assets/css/style.css
+// =========================================================
+
+// 1. SASS Variables
+$primary-purple: #5b21b6;
+$secondary-purple: #7c3aed;
+$deep-purple: #4c1d95;
+$accent-pink: #ec4899;
+$text-dark: #30243a;
+$text-muted: #756783;
+$bg-soft: #faf7ff;
+$border-light: #eadfff;
+$white: #ffffff;
+
+$font-primary: "Poppins", sans-serif;
+$font-heading: "Playfair Display", serif;
+
+$radius-card: 18px;
+$radius-pill: 30px;
+$shadow-soft: 0 5px 20px rgba(85, 35, 130, 0.08);
+$shadow-hover: 0 14px 30px rgba(85, 35, 130, 0.15);
+
+// 2. SASS Mixins
+@mixin flex-center($ gap: 10px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $gap;
+}
+
+@mixin card-surface {
+    background: $white;
+    border: 1px solid $border-light;
+    border-radius: $radius-card;
+    box-shadow: $shadow-soft;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: $shadow-hover;
+    }
+}
+
+@mixin gradient-button {
+    background: linear-gradient(135deg, $primary-purple, $secondary-purple);
+    color: $white;
+    border-radius: $radius-pill;
+    padding: 12px 24px;
+    font-family: $font-primary;
+    font-weight: 600;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: linear-gradient(135deg, $deep-purple, $primary-purple);
+        transform: translateY(-2px);
+    }
+}
+
+// 3. Nested Component Rules
+body {
+    font-family: $font-primary;
+    color: $text-dark;
+    background: $white;
+}
+
+.main-header {
+    height: 90px;
+    background: $white;
+    box-shadow: 0 2px 12px rgba(75, 35, 120, 0.08);
+
+    .logo-area {
+        @include flex-center(12px);
+
+        .logo-text {
+            h2 {
+                font-family: $font-heading;
+                color: $primary-purple;
+            }
+            span {
+                color: $secondary-purple;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .navbar {
+        a {
+            color: $text-dark;
+            font-weight: 500;
+            transition: color 0.3s ease;
+
+            &:hover,
+            &.active {
+                color: $secondary-purple;
+            }
+        }
+    }
+}
+
+.product-card,
+.shop-product-card,
+.category-card {
+    @include card-surface;
+}
+
+.login-btn,
+.banner-btn,
+.continue-shopping {
+    @include gradient-button;
+}
